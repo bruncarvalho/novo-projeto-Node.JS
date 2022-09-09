@@ -1,21 +1,23 @@
-import {response, Router} from "express"
+import {Router} from "express"
 
 const router = Router()
 
-router.get('/', (req, res)=>{
-  res.send('<h1>Página Inicial 💁‍♀️</h1>')
-})
 
-router.get('/sobre', (require, response)=>{
-  response.json('<h1>Estudando de programação 💻</h1>')
-})
 
-router.get('/dados', (require, response)=>{
- return response.json({
-    nome: 'Bruna',
-    idade: 34,
-    Cidade: 'Juiz de Fora/MG'
+router.post('/apipost', (request, response)=>{
+  const { namePessoa, agePessoa } = request.body
+  const pessoa = {
+    name: namePessoa,
+    age: agePessoa
+  } 
+  return response.json(pessoa)
+} )
+
+
+router.get('/api', (request, response)=>
+  response.json({
+    messege: 'Alô'
   })
-})
+)
 
 export{router}
